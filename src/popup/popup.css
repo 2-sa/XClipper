@@ -401,6 +401,11 @@ body {
   --obsidian-glow: rgba(124, 58, 237, 0.18);
   --pdf: #dc2626;
   --pdf-glow: rgba(220, 38, 38, 0.18);
+  /* Sit above the Format trigger (z-index: 1). The hover transform makes each
+   * button a stacking context, which would cap its tooltip's z-index: 30 and
+   * paint it under the trigger. */
+  position: relative;
+  z-index: 2;
   display: flex;
   gap: 8px;
   align-items: center;

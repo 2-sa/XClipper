@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 44" width="168" height="44" role="img" aria-label="2,000+ users">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 44" width="168" height="44" role="img" aria-label="10,000+ users">
   <style>
     .pill { fill: #e6f4ea; stroke: #b7dfc3; }
     .fg { fill: #137333; }
@@ -24,5 +24,5 @@
   </g>
 
   <!-- textLength pins the width so the pill fits whichever system font renders it -->
-  <text class="label fg" x="48" y="27.5" textLength="100" lengthAdjust="spacingAndGlyphs">2,000+ users</text>
+  <text class="label fg" x="48" y="27.5" textLength="100" lengthAdjust="spacingAndGlyphs">10,000+ users</text>
 </svg>

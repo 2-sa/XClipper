@@ -5,11 +5,13 @@
 //   node scripts/popup-screenshots.mjs           # all locales in src/_locales
 //   node scripts/popup-screenshots.mjs en de fa  # subset
 //
-// Output per locale (seven shots):
+// Output per locale (seven shots, plus three step-light close-ups):
 //   screenshots/popup-<locale>.png            — main view (Single export)
 //   screenshots/batch-<locale>.png            — Batch export view
 //   screenshots/batch-settings-<locale>.png   — Batch view, Export settings expanded
 //   screenshots/batch-fast-<locale>.png       — Batch view, Fast Batch toggle armed
+//   screenshots/fast-steps-<locale>-<source>.png — the four Auto/Super step lights,
+//                                               per source (bookmarks/likes/profile)
 //   screenshots/settings-dl-<locale>.png      — settings, Downloads + Inline open
 //   screenshots/settings-obs-<locale>.png     — Obsidian + Frontmatter open, toggle OFF
 //   screenshots/settings-obs-on-<locale>.png  — Obsidian + Frontmatter open, toggle ON
@@ -171,6 +173,7 @@ async function screenshotPopup(chromePath, locale) {
 
     await setFastBatchArmed(page, 'auto');
     await captureShot(page, join(SHOTS, `batch-fast-${locale}.png`), locale, 'batch-fast');
+    for (const source of ['bookmarks', 'likes', 'profile']) await captureFastSteps(page, locale, source);
     await setFastBatchArmed(page, 'manual');
 
     await openSettings(page);
@@ -265,6 +268,28 @@ async function setFastBatchArmed(page, mode = 'auto') {
     setState('fast-step-expand', 'pending');
   }, mode);
   await new Promise((r) => setTimeout(r, 50));
+}
+
+// Close-up of the four Auto/Super step lights with one source's Page label, in
+// its red "missing" state, as updateFastSteps() leaves it. Long translations
+// wrap every pill onto two lines, so warn when any label is taller than one.
+async function captureFastSteps(page, locale, source) {
+  const wrapped = await page.evaluate((src) => {
+    const label = document.querySelector('#fast-step-page .fast-step-label');
+    label.textContent = chrome.i18n.getMessage(`fast_step_page_${src}`) || label.textContent;
+    document.getElementById('fast-step-page').dataset.state = 'missing';
+    const labels = [...document.querySelectorAll('#fast-steps .fast-step-label')];
+    const oneLine = Math.min(...labels.map((l) => l.getBoundingClientRect().height));
+    return labels.filter((l) => l.getBoundingClientRect().height > oneLine * 1.5).map((l) => l.textContent);
+  }, source);
+  if (wrapped.length) warn(`${locale} [fast-steps ${source}] labels wrap: ${wrapped.join(' · ')}`);
+  const el = await page.$('#fast-steps');
+  const box = await el.boundingBox();
+  await page.screenshot({
+    path: join(SHOTS, `fast-steps-${locale}-${source}.png`),
+    clip: { x: box.x - 8, y: box.y - 6, width: box.width + 16, height: box.height + 12 },
+  });
+  log(`✓ ${locale} [fast-steps ${source}]`);
 }
 
 async function openSettings(page) {

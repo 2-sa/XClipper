@@ -137,17 +137,23 @@
   "fast_caption_daterange": {
     "message": "Solo publicaciones tuiteadas en el rango inferior; escanea en profundidad sin mover la posición de «Reanudar»."
   },
-  "fast_step_page": {
-    "message": "Recargar x.com"
+  "fast_step_page_bookmarks": {
+    "message": "Recargar marcadores"
+  },
+  "fast_step_page_likes": {
+    "message": "Recargar likes"
+  },
+  "fast_step_page_profile": {
+    "message": "Recargar perfil"
   },
   "fast_step_tweet": {
     "message": "Abrir un tweet"
   },
   "fast_step_fetch": {
-    "message": "Obteniendo ..."
+    "message": "Carga"
   },
   "fast_step_expand": {
-    "message": "Expandiendo ..."
+    "message": "Expansión"
   },
   "batch_pause": {
     "message": "Pausar"

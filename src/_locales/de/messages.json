@@ -137,17 +137,23 @@
   "fast_caption_daterange": {
     "message": "Nur Posts aus dem Zeitraum unten; durchsucht ältere Posts, ohne die Weiter-Position zu ändern."
   },
-  "fast_step_page": {
-    "message": "x.com neu laden"
+  "fast_step_page_bookmarks": {
+    "message": "Lesezeichen neu laden"
+  },
+  "fast_step_page_likes": {
+    "message": "Likes neu laden"
+  },
+  "fast_step_page_profile": {
+    "message": "Profil neu laden"
   },
   "fast_step_tweet": {
-    "message": "Einen Tweet öffnen"
+    "message": "Tweet öffnen"
   },
   "fast_step_fetch": {
-    "message": "Wird abgerufen ..."
+    "message": "Abrufen"
   },
   "fast_step_expand": {
-    "message": "Wird erweitert ..."
+    "message": "Erweitern"
   },
   "batch_pause": {
     "message": "Pause"

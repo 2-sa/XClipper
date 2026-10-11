@@ -137,17 +137,23 @@
   "fast_caption_daterange": {
     "message": "仅导出在下方时间范围内发布的帖子；深度扫描但不移动“继续”模式的位置。"
   },
-  "fast_step_page": {
-    "message": "重新加载 x.com"
+  "fast_step_page_bookmarks": {
+    "message": "刷新书签页"
+  },
+  "fast_step_page_likes": {
+    "message": "刷新点赞页"
+  },
+  "fast_step_page_profile": {
+    "message": "刷新个人资料页"
   },
   "fast_step_tweet": {
     "message": "打开一条推文"
   },
   "fast_step_fetch": {
-    "message": "正在获取 ..."
+    "message": "正在获取"
   },
   "fast_step_expand": {
-    "message": "正在展开 ..."
+    "message": "正在展开"
   },
   "batch_pause": {
     "message": "暂停"

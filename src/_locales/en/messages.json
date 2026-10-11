@@ -137,17 +137,23 @@
   "fast_caption_daterange": {
     "message": "Only posts tweeted in the window below; scans deep without moving Resume's position."
   },
-  "fast_step_page": {
-    "message": "Reload x.com"
+  "fast_step_page_bookmarks": {
+    "message": "Reload bookmarks"
+  },
+  "fast_step_page_likes": {
+    "message": "Reload likes"
+  },
+  "fast_step_page_profile": {
+    "message": "Reload profile"
   },
   "fast_step_tweet": {
-    "message": "Open one tweet"
+    "message": "Open a tweet"
   },
   "fast_step_fetch": {
-    "message": "Fetching ..."
+    "message": "Fetching"
   },
   "fast_step_expand": {
-    "message": "Expanding ..."
+    "message": "Expanding"
   },
   "batch_pause": {
     "message": "Pause"

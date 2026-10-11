@@ -217,10 +217,22 @@ function setPaginateMode(mode: PaginateMode): void {
   applyBatchView(); // reveal/hide the date inputs for the new mode
 }
 
+// The Page light only turns green once the source's own feed request is seen,
+// and only that source's page fires it — reloading x.com/home never captures
+// Bookmarks. So the label names the page to reload.
+const PAGE_STEP: Record<'bookmarks' | 'profile' | 'likes', { key: string; text: string; hint: string }> = {
+  bookmarks: { key: 'fast_step_page_bookmarks', text: 'Reload bookmarks', hint: 'Open x.com/i/history and reload it so its feed request is captured' },
+  likes: { key: 'fast_step_page_likes', text: 'Reload likes', hint: 'Open x.com/i/history/likes and reload it so its feed request is captured' },
+  profile: { key: 'fast_step_page_profile', text: 'Reload profile', hint: 'Open the profile you are exporting and reload it so its feed request is captured' },
+};
+
 // Step lights when idle: Page/Tweet show readiness (what to do before Export);
 // Fetch/Expand are pending. During a run, render() drives them by phase.
 export async function updateFastSteps(source: 'bookmarks' | 'profile' | 'likes'): Promise<void> {
   if (fastActive) return; // a run owns the steps (see render)
+  const page = PAGE_STEP[source];
+  const pageLabel = fastStepPage?.querySelector('.fast-step-label');
+  if (pageLabel) pageLabel.textContent = t(page.key, page.text);
   let r: FastBatchReadyResponse | undefined;
   try {
     r = (await chrome.runtime.sendMessage({ action: 'FAST_BATCH_READY', source })) as
@@ -232,7 +244,7 @@ export async function updateFastSteps(source: 'bookmarks' | 'profile' | 'likes')
   // A failed handler sends { success: false, error }, not a readiness answer.
   // Keep the steps as they are rather than tell the user to reload the page.
   if (typeof r?.feed !== 'boolean') return;
-  setStep(fastStepPage, r?.feed ? 'ready' : 'missing', r?.feed ? '' : 'Reload this page so its feed request is captured');
+  setStep(fastStepPage, r?.feed ? 'ready' : 'missing', r?.feed ? '' : page.hint);
   setStep(fastStepTweet, r?.tweetDetail ? 'ready' : 'missing', r?.tweetDetail ? '' : 'Open any one tweet so threads & articles can be expanded');
   setStep(fastStepFetch, 'pending');
   setStep(fastStepExpand, 'pending');

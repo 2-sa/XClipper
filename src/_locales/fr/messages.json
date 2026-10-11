@@ -137,17 +137,23 @@
   "fast_caption_daterange": {
     "message": "Uniquement les posts publiés dans la plage ci-dessous ; parcourt en profondeur sans déplacer le point de reprise."
   },
-  "fast_step_page": {
-    "message": "Recharger x.com"
+  "fast_step_page_bookmarks": {
+    "message": "Recharger les signets"
+  },
+  "fast_step_page_likes": {
+    "message": "Recharger les likes"
+  },
+  "fast_step_page_profile": {
+    "message": "Recharger le profil"
   },
   "fast_step_tweet": {
-    "message": "Ouvrir un tweet"
+    "message": "Ouvrir tweet"
   },
   "fast_step_fetch": {
-    "message": "Récupération ..."
+    "message": "Collecte"
   },
   "fast_step_expand": {
-    "message": "Développement ..."
+    "message": "Dépliage"
   },
   "batch_pause": {
     "message": "Pause"

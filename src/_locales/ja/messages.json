@@ -137,17 +137,23 @@
   "fast_caption_daterange": {
     "message": "下の期間内に投稿されたものだけを対象に、「再開」の位置を動かさず深くスキャンします。"
   },
-  "fast_step_page": {
-    "message": "x.comを再読み込み"
+  "fast_step_page_bookmarks": {
+    "message": "ブックマーク再読込"
+  },
+  "fast_step_page_likes": {
+    "message": "いいね再読込"
+  },
+  "fast_step_page_profile": {
+    "message": "プロフィール再読込"
   },
   "fast_step_tweet": {
-    "message": "ツイートを1件開く"
+    "message": "ツイートを開く"
   },
   "fast_step_fetch": {
-    "message": "取得中 ..."
+    "message": "取得中"
   },
   "fast_step_expand": {
-    "message": "展開中 ..."
+    "message": "展開中"
   },
   "batch_pause": {
     "message": "一時停止"
